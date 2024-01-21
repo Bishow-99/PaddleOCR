@@ -86,7 +86,9 @@ class COCODataSet(DetDataset):
 
     def parse_dataset(self):
         anno_path = os.path.join(self.dataset_dir, self.anno_path)
+        print("the anno_path is ", anno_path)
         image_dir = os.path.join(self.dataset_dir, self.image_dir)
+        print("the img directory is ", image_dir)
 
         assert anno_path.endswith('.json'), \
             'invalid coco annotation file: ' + anno_path

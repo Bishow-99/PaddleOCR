@@ -1092,7 +1092,7 @@ def get_test_images(infer_dir, infer_img):
     return images
 
 
-def visualize(image_list, result, labels, output_dir='output/', threshold=0.5):
+def visualize(image_list, result, labels, output_dir='output/', threshold=0.20):
     # visualize the predict result
     if 'lanes' in result:
         print(image_list)
@@ -1106,8 +1106,19 @@ def visualize(image_list, result, labels, output_dir='output/', threshold=0.5):
             return
     start_idx = 0
     for idx, image_file in enumerate(image_list):
+        new_img=cv2.imread(os.path.join(output_dir, os.path.basename(image_file)))
         im_bboxes_num = result['boxes_num'][idx]
         im_results = {}
+        # output=result["boxes"]
+        # count=0
+        # for item in output:
+        #     count+=1
+        #     print("the item 1 is ", item[1])
+        #     cv2.putText(new_img, str(item[0]), (200, 200), 2,
+        #                2, (255,0,0), 2, cv2.LINE_AA)
+        #     cv2.rectangle(new_img, (int(item[2]),int(item[3])),(int(item[4]),int(item[5])),(255,0,0),2)
+        # # print(type(new_img), new_img.shape, count)
+        # cv2.imwrite("../output_images/output1.png", new_img)
         if 'boxes' in result:
             im_results['boxes'] = result['boxes'][start_idx:start_idx +
                                                   im_bboxes_num, :]
@@ -1123,7 +1134,6 @@ def visualize(image_list, result, labels, output_dir='output/', threshold=0.5):
         if 'score' in result:
             im_results['score'] = result['score'][start_idx:start_idx +
                                                   im_bboxes_num]
-
         start_idx += im_bboxes_num
         im = visualize_box_mask(
             image_file, im_results, labels, threshold=threshold)

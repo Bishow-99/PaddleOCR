@@ -58,4 +58,4 @@ PicoHeadV2:
     nms_top_k: 1000
     keep_top_k: 100
     score_threshold: 0.025
-    nms_threshold: 0.6
+    nms_threshold: 0.3

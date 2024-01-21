@@ -226,6 +226,7 @@ def draw_segm(im,
             0.3, (0, 0, 0),
             1,
             lineType=cv2.LINE_AA)
+        cv2.imwrite("output_image/outputimage.png",im)
     return Image.fromarray(im.astype('uint8'))
 
 

@@ -275,6 +275,7 @@ class CommonDataset(object):
     def __init__(self, **dataset_args):
         super(CommonDataset, self).__init__()
         dataset_args = copy.deepcopy(dataset_args)
+        print("the dataset_args is ", dataset_args)
         type = dataset_args.pop("name")
         self.dataset = getattr(source, type)(**dataset_args)
 

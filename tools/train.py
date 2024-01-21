@@ -47,13 +47,13 @@ def parse_args():
     parser.add_argument(
         "--eval",
         action='store_true',
-        default=False,
+        default=True,
         help="Whether to perform evaluation in train")
     parser.add_argument(
         "-r", "--resume", default=None, help="weights path for resume")
     parser.add_argument(
         "--slim_config",
-        default=None,
+        default=True,
         type=str,
         help="Configuration file of slim method.")
     parser.add_argument(
@@ -82,7 +82,7 @@ def parse_args():
     parser.add_argument(
         "--use_wandb",
         type=bool,
-        default=False,
+        default=True,
         help="whether to record the data to wandb.")
     parser.add_argument(
         '--save_prediction_only',
